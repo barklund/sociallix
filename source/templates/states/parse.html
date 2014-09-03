@@ -1,0 +1,237 @@
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="cell cell-gray-darker cell-fixed-height-narrow ">
+					<div class="cell-background cell-gray-lighter" ng-style="{width: (100*parsed/total)+'%'}"></div>
+					<h6>Analyzing</h6>
+					<h2 ng-show="parsing">{{ month }} '{{ year }}</h2>
+					<h2 ng-hide="parsing">Complete</h2>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-6">
+				<div class="cell cell-brown cell-fixed-height">
+					<h6>Combined LIX</h6>
+					<img src="img/brown-loader.gif" ng-show="parsing">
+					<h1 ng-hide="parsing">{{ lix }}</h1>
+				</div>
+			</div>
+		</div>
+			
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="cell cell-blue cell-fixed-height">
+					<h6>Reading level</h6>
+					<img src="img/blue-loader.gif" ng-show="parsing">
+					<h2 ng-hide="parsing" ng-bind-html="readingLevel.level"></h2>
+					<p ng-hide="parsing">E.g. <span ng-bind-html="readingLevel.eg"></span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="cell cell-gray-lighter cell-fixed-height-narrow cell-left">
+							<h4>Messages</h4>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="cell cell-gray-lighter cell-fixed-height-narrow cell-right">
+							<h2>{{ parsed }}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="cell cell-gray-light cell-fixed-height-narrow cell-left">
+							<h4>Sentences</h4>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="cell cell-gray-light cell-fixed-height-narrow cell-right">
+							<h2>{{ sentences }}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="cell cell-gray cell-fixed-height-narrow cell-left">
+							<h4>Long words</h4>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="cell cell-gray cell-fixed-height-narrow cell-right">
+							<h2>{{ longwords }}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="cell cell-gray-dark cell-fixed-height-narrow cell-left">
+							<h4>Words</h4>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="cell cell-gray-dark cell-fixed-height-narrow cell-right">
+							<h2>{{ words }}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="cell cell-gray-darker cell-fixed-height-narrow cell-left">
+							<h4>Characters</h4>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="cell cell-gray-darker cell-fixed-height-narrow cell-right">
+							<h2>{{ characters }}</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6 col-md-pull-right">
+		<div class="row">
+
+			<div class="col-xs-6">
+				<div class="cell cell-green cell-fixed-height">
+					<h6>Highest lix post</h6>
+					<h1>{{ maxlixdata.lix }}</h1>
+				</div>
+			</div>
+		</div>
+			
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="cell cell-green-light cell-fixed-height">
+					<div class="cell-fixed-height-content" ng-bind-html="maxlixdata.html_message"></div>
+				</div>
+			</div>
+			
+			<div class="col-xs-6 ">
+				<div class="cell cell-red cell-fixed-height">
+					<h6>Lowest lix post</h6>
+					<h1>{{ minlixdata.lix }}</h1>
+				</div>
+			</div>
+		</div>
+			
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-6">
+				<div class="cell cell-red-light cell-fixed-height">
+					<div class="cell-fixed-height-tall-content" ng-bind-html="minlixdata.html_message"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-xs-12 col-md-6">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="cell cell-gray cell-fixed-height-narrow">
+					<h4>Your posts</h4>
+				</div>
+			</div>
+			<div class="col-xs-12" ng-hide="showMessages">
+				<div class="cell cell-gray-light cell-fixed-height-tiny">
+				</div>
+			</div>
+			<div class="col-xs-12" ng-hide="showMessages">
+				<div class="cell cell-gray-light cell-fixed-height-huge cell-top-align">
+					<h6 class="bottom-margin">Show messages live? This might be tough on your device.</h6>
+					<h3><a href ng-click="toggleMessages();">Show 'em</h3>
+				</div>
+			</div>
+			<div class="col-xs-12" ng-show="showMessages">
+				<div class="cell cell-gray-light cell-fixed-height-tiny">
+					<div class="row">
+						<div class="col-xs-6">
+							<h6>Posts</h6>
+						</div>
+						<div class="col-xs-3">
+							<h6>Date</h6>
+						</div>
+						<div class="col-xs-3">
+							<h6>LIX</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12" ng-show="showMessages">
+				<div class="cell cell-gray-light cell-fixed-height-huge cell-top-align">
+					<div class="cell-fixed-height-huge-content">
+						<div class="row bottom-margin" ng-repeat="message in messages">
+							
+							<div class="col-xs-6">
+								<h5 ng-bind-html="message.html_message"></h5>
+							</div>
+							<div class="col-xs-3">
+								<h3 class="text-gray-dark">{{ message.date|dateformat }}</h3>
+							</div>
+							<div class="col-xs-3">
+								<h3 ng-show="message.lix">{{ message.lix }}</h3>
+								<h3 class="text-gray-dark" ng-hide="message.lix">–</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="cell cell-facebook cell-fixed-height ">
+					<h6 class="bottom-margin">Share on Facebook</h6>
+					<a href ng-click="shareFacebook();">
+						<img src="img/icon-facebook.png" height="40">
+					</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-6">
+				<div class="cell cell-twitter cell-fixed-height ">
+					<h6 class="bottom-margin">Share on Twitter</h6>
+					<a href ng-click="shareTwitter();">
+						<img src="img/icon-twitter.png" height="40">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+	<div class="col-xs-12 col-md-6">
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="cell cell-gplus cell-fixed-height ">
+					<h6 class="bottom-margin">Share on Google+</h6>
+					<a href ng-click="shareGPlus();">
+						<img src="img/icon-gplus.png" height="40">
+					</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-6">
+				<div class="cell cell-fixed-height text-gray-dark cell-left">
+					<h6>Idea &nbsp; + &nbsp; code</h6>
+					<h2 class="bottom-margin"><a href="https://www.facebook.com/barklund">Morten Barklund</a></h2>
+					<h6>Design</h6>
+					<h2><a href="https://www.linkedin.com/in/jacobgrubbe">Jacob Grubbe</a></h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
