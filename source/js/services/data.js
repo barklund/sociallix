@@ -11,9 +11,6 @@ App.service('dataService', function() {
 			if (a.date < b.date) return -1;
 			return 0;
 		});
-		for (var i = 0; i < data.length; i++) {
-			console.log(data[i].date.slice(0,10));
-		}
 		return data;
 	}
 	

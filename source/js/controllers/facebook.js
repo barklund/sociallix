@@ -48,7 +48,6 @@ App.controller('FacebookCtrl', function ($scope, $location, $facebook, $q, dataS
 								}
 							}
 							var l = g.comments;
-							console.log("does thing have comments",l);
 							if (!l || !l.data || !l.data.length) {
 								continue;
 							}
