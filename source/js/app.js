@@ -12,7 +12,7 @@ App
 	})
 	.config(function($facebookProvider) {
 		$facebookProvider.setAppId('555763154530326');
-		$facebookProvider.setPermissions('user_status');
+		$facebookProvider.setPermissions('user_status,user_photosm');
 		$facebookProvider.setCustomInit({
 			version    : 'v2.0'
 		});
